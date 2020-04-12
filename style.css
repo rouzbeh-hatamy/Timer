@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #212121;
+    color: #d3d3d3;
+    font-family: "Lato";
+
+}
+
+.btn {
+    background-color: #111111;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #d3d3d3;
+    cursor: pointer;
+    transition: 0.5s;
+    outline: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#datetime {
+    padding: 20px 0px;
+    font-size: 10vw;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+#back,
+#start,
+#stop,
+#restart,
+#lap {
+    display: none;
+}
+
+.btn:hover {
+    background-color: #707070;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url(./Lato-Light.ttf);
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+
+    #datetime {
+        font-size: 15vw;
+    }
+
+    .btnContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+}

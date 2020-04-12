@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Time</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body onload="startinter()">
+    <div class="container">
+        <div id="datetime">
+
+        </div>
+        <div class="btnContainer">
+            <input type="button" class="btn" id="togglebtn" onclick="toggle24h();" value="12/24">
+            <input type="button" class="btn" id="stopWatch" value="stopwatch" onclick="stopWatch()">
+            <input type="button" class="btn" id="timer" value="Timer">
+            <input type="button" class="btn" id="back" value="back" onclick="back()">
+            <input type="button" class="btn" id="start" value="start" onclick="startbtnf()">
+            <input type="button" class="btn" id="stop" value="stop" onclick="stop()">
+            <input type="button" class="btn" id="restart" value="restart" onclick="restart()">
+            <input type="button" class="btn" id="lap" value="lap">
+        </div>
+    </div>
+
+
+
+    <script src="./script.js" async defer></script>
+</body>
+
+</html>
