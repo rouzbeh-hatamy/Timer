@@ -68,6 +68,16 @@ body {
     }
 }
 
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @media only screen and (max-width: 1000px) {
 
     #datetime {
@@ -80,4 +90,31 @@ body {
         width: 90%;
     }
 
+}
+
+.laps {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 21vh;
+    overflow: hidden;
+    box-sizing: border-box;
+
+}
+
+#lap1 {
+    color: #d3d3d3;
+    font-size: 3vw;
+    animation: 1s ease-out 0s 1 slideIn;
+}
+
+#lap2 {
+    color: #707070;
+    font-size: 2vw;
+}
+
+#lap3 {
+    color: #515151;
+    font-size: 1.5vw;
 }
