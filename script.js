@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
 // btns
 const stopwatchbtn = document.getElementById('stopWatch');
 const timerbtn = document.getElementById('timer');
@@ -9,6 +7,8 @@ const backbtn = document.getElementById('back');
 const stopbtn = document.getElementById('stop');
 const restartbtn = document.getElementById('restart');
 const lapbtn = document.getElementById('lap');
+const setTimerbtn = document.getElementById('setTimer');
+const stopTimerbtn = document.getElementById('stopTimer');
 
 // outputs
 function inner(final) {
@@ -18,6 +18,8 @@ function inner(final) {
 // time
 let i = false;
 let inter;
+let lapIndex = 1;
+let Timerinterval;
 
 // add zero
 function addZero(int) {
@@ -116,11 +118,18 @@ function startbtnf() {
 
 // back
 function back() {
+  debugger;
   changebtn.style.display = 'flex';
   timerbtn.style.display = 'flex';
   stopwatchbtn.style.display = 'flex';
   backbtn.style.display = 'none';
   startbtn.style.display = 'none';
+  setTimerbtn.style.display = 'none';
+  stopTimerbtn.style.display = 'none';
+  const lapsDiv = document.querySelector('.laps');
+  lapIndex = 1;
+  lapsDiv.innerHTML = '';
+  clearInterval(Timerinterval);
   startinter();
 }
 
@@ -140,7 +149,6 @@ function restart() {
   startStopWatch();
 }
 // lap
-let lapIndex = 1;
 function lap() {
   const lapsDiv = document.querySelector('.laps');
   let lapText = '';
@@ -173,6 +181,65 @@ function lap() {
       lastLap.id = 'lap2';
       lapText = `<di id="lap1">${stopw()}</di>`;
       lastLap.insertAdjacentHTML('beforebegin', lapText);
+      lapsDiv.lastChild.remove();
   }
   lapIndex++;
+}
+
+// timer
+
+function timerF() {
+  changebtn.style.display = 'none';
+  timerbtn.style.display = 'none';
+  stopwatchbtn.style.display = 'none';
+  setTimerbtn.style.display = 'flex';
+  backbtn.style.display = 'flex';
+  stopinter();
+  const inputs = `<input type="number" id="hour" value="00" min="0" max="24">:
+  <input type="number" id="min" value="00" min="0" max="60">:
+  <input type="number" id="sec" value="00" min="0" max="60">`;
+  return inner(inputs);
+}
+
+// set timer
+function setTimerF() {
+  stopTimerbtn.style.display = 'flex';
+  setTimerbtn.style.display = 'none';
+  // get the values
+  const h = document.getElementById('hour').value;
+  const m = document.getElementById('min').value;
+  const s = document.getElementById('sec').value;
+  const duration = Number(h) * 60 * 60 + Number(m) * 60 + Number(s);
+  // timer vars
+  const start = Date.now();
+  let diff;
+  let hours;
+  let minutes;
+  let seconds;
+  const display = document.getElementById('datetime');
+  function timer() {
+    diff = duration - Math.floor((Date.now() - start) / 1000);
+
+    hours = Math.floor(diff / 3600);
+    minutes = Math.floor((diff % 3600) / 60);
+    seconds = Math.floor((diff % 3600) % 60);
+
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+    display.textContent = `${hours}:${minutes}:${seconds}`;
+
+    if (diff <= 0) {
+      clearInterval(Timerinterval);
+    }
+  }
+  // we don't want to wait a full second before the timer starts
+  timer();
+  Timerinterval = setInterval(timer, 1000);
+}
+
+// stop timer
+
+function stopTimer() {
+  clearInterval(Timerinterval);
 }

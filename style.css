@@ -33,6 +33,7 @@ body {
     padding: 20px 0px;
     font-size: 10vw;
     animation: 1s ease-out 0s 1 slideInFromLeft;
+    text-align: center;
 }
 
 .btnContainer {
@@ -45,7 +46,9 @@ body {
 #start,
 #stop,
 #restart,
-#lap {
+#lap,
+#setTimer,
+#stopTimer {
     display: none;
 }
 
@@ -117,4 +120,15 @@ body {
 #lap3 {
     color: #515151;
     font-size: 1.5vw;
+}
+
+#datetime input {
+    width: 15vw;
+    font-size: 10vw;
+    color: #d3d3d3;
+    height: 20vh;
+    text-align: center;
+    background-color: unset;
+    border: none;
+    outline: none;
 }
